@@ -38,7 +38,7 @@ export default function SpeciesCard({
       <p>{species.description ? species.description.slice(0, 150).trim() + "..." : ""}</p>
       <div>
         <LearnMoreDialog userId={sessionId} species={species} profiles={profiles} />
-        {species.author == sessionId && <EditSpeciesDialog userId={sessionId} species={species} />}
+        {species.author == sessionId && <EditSpeciesDialog species={species} />}
       </div>
     </div>
   );
