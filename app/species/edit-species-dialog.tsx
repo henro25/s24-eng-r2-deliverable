@@ -68,7 +68,7 @@ All form fields should be set to non-undefined default values.
 Read more here: https://legacy.react-hook-form.com/api/useform/
 */
 
-export default function EditSpeciesDialog({ userId, species }: { userId: string; species: Species }) {
+export default function EditSpeciesDialog({ species }: { species: Species }) {
   const router = useRouter();
 
   // Control open/closed state of the dialog through isEditing
@@ -167,7 +167,7 @@ export default function EditSpeciesDialog({ userId, species }: { userId: string;
                     <FormItem>
                       <FormLabel>Common Name</FormLabel>
                       <FormControl>
-                        <Input defaultValue={placeholderText} {...rest} />
+                        <Input value={value ?? ""} defaultValue={placeholderText} {...rest} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -212,6 +212,7 @@ export default function EditSpeciesDialog({ userId, species }: { userId: string;
                         {/* Using shadcn/ui form with number: https://github.com/shadcn-ui/ui/issues/421 */}
                         <Input
                           type="number"
+                          value={value ?? ""}
                           defaultValue={species.total_population ?? ""}
                           {...rest}
                           onChange={(event) => field.onChange(+event.target.value)}
@@ -232,7 +233,11 @@ export default function EditSpeciesDialog({ userId, species }: { userId: string;
                     <FormItem>
                       <FormLabel>Image URL</FormLabel>
                       <FormControl>
-                        <Input defaultValue={species.image ? species.image : "Image is not provided"} {...rest} />
+                        <Input
+                          value={value ?? ""}
+                          defaultValue={species.image ? species.image : "Image is not provided"}
+                          {...rest}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -250,6 +255,7 @@ export default function EditSpeciesDialog({ userId, species }: { userId: string;
                       <FormLabel>Description</FormLabel>
                       <FormControl>
                         <Textarea
+                          value={value ?? ""}
                           defaultValue={species.description ? species.description : "Description is not provided"}
                           {...rest}
                         />

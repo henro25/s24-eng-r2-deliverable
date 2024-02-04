@@ -163,7 +163,7 @@ export default function LearnMoreDialog({
               <FormField
                 control={form.control}
                 name="scientific_name"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel>Scientific Name</FormLabel>
                     <FormControl>
@@ -176,9 +176,7 @@ export default function LearnMoreDialog({
               <FormField
                 control={form.control}
                 name="common_name"
-                render={({ field }) => {
-                  // We must extract value from field and convert a potential defaultValue of `null` to "" because inputs can't handle null values: https://github.com/orgs/react-hook-form/discussions/4091
-                  const { value, ...rest } = field;
+                render={() => {
                   return (
                     <FormItem>
                       <FormLabel>Common Name</FormLabel>
@@ -196,7 +194,7 @@ export default function LearnMoreDialog({
               <FormField
                 control={form.control}
                 name="kingdom"
-                render={({ field }) => (
+                render={() => (
                   <FormItem>
                     <FormLabel>Kingdom</FormLabel>
                     <FormControl>
@@ -209,8 +207,7 @@ export default function LearnMoreDialog({
               <FormField
                 control={form.control}
                 name="total_population"
-                render={({ field }) => {
-                  const { value, ...rest } = field;
+                render={() => {
                   return (
                     <FormItem>
                       <FormLabel>Total Population</FormLabel>
@@ -230,9 +227,7 @@ export default function LearnMoreDialog({
               <FormField
                 control={form.control}
                 name="description"
-                render={({ field }) => {
-                  // We must extract value from field and convert a potential defaultValue of `null` to "" because textareas can't handle null values: https://github.com/orgs/react-hook-form/discussions/4091
-                  const { value, ...rest } = field;
+                render={() => {
                   return (
                     <FormItem>
                       <FormLabel>Description</FormLabel>
@@ -250,8 +245,7 @@ export default function LearnMoreDialog({
               <FormField
                 control={form.control}
                 name="author"
-                render={({ field }) => {
-                  const { value, ...rest } = field;
+                render={() => {
                   const specificProfile = profiles?.find((profile) => profile.id === species.author);
                   return (
                     <FormItem>
